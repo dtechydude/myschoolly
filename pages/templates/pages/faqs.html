@@ -1,7 +1,7 @@
 {% extends 'pages/schoolly-home.html' %}
 {% load static %}
 
-  {% block title %}<title>Schoolly Blog </title>{% endblock title %}
+  {% block title %}<title>Schoolly - help center</title>{% endblock title %}
 
   {% block content_body %}
   {% block slide %}
@@ -37,7 +37,7 @@
             We have compiled a list of frequently asked questions which offer answers and solutions 
             to our most frequently received complaints and enquiries.
              <br /> In case you have other questions beyond what 
-              is provided here, please <a href="">contact us.</a>
+              is provided here, please <a href="{% url 'pages:contact' %}">contact us.</a>
           </div>
 
           <div class="accordion accordion-flush px-xl-5" id="faqlist">
