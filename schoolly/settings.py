@@ -67,7 +67,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'results.apps.ResultsConfig',
     'attendance.apps.AttendanceConfig',
-    'demoschool.apps.DemoschoolConfig',
+    # 'demoschool.apps.DemoschoolConfig',
     'payment.apps.PaymentConfig',
     'crispy_forms',
     'storages',
@@ -184,7 +184,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-LOGIN_REDIRECT_URL = 'pages:home'
+LOGIN_REDIRECT_URL = 'portal:portal-home'
 LOGIN_URL = 'users:login'
 
 

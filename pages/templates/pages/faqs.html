@@ -1,0 +1,127 @@
+{% extends 'pages/schoolly-home.html' %}
+{% load static %}
+
+  {% block title %}<title>Schoolly Blog </title>{% endblock title %}
+
+  {% block content_body %}
+  {% block slide %}
+ 
+  {% endblock slide %}
+  <div class="breadcrumbs">
+  
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Complaints & Enquiries</h2>
+        <ol>
+          <!-- <li><a href="index.html">Home</a></li> -->
+          <!-- <li>Home</li> -->
+        </ol>
+      </div>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+
+  <!-- ======= F.A.Q Section ======= -->
+  <section id="faq" class="faq">
+    <div class="container-fluid" data-aos="fade-up">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+          <div class="content px-xl-5">
+            <h3>Frequently Asked <strong>Questions</strong></h3>
+            <p>
+            We have compiled a list of frequently asked questions which offer answers and solutions 
+            to our most frequently received complaints and enquiries.
+             <br /> In case you have other questions beyond what 
+              is provided here, please <a href="">contact us.</a>
+          </div>
+
+          <div class="accordion accordion-flush px-xl-5" id="faqlist">
+
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                  <i class="bi bi-question-circle question-icon"></i>
+                  How long does it take to set up for my school?
+                </button>
+              </h3>
+              <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                <div class="accordion-body">
+                  Your school will be onboarded within 72hrs of signing up for schoolly. 
+                </div>
+              </div>
+            </div><!-- # Faq item-->
+
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                  <i class="bi bi-question-circle question-icon"></i>
+                  Do we require special training to get started?
+                </button>
+              </h3>
+              <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                <div class="accordion-body">
+                  Yes, Schoolly provides FREE training session to get you started with the application.
+                </div>
+              </div>
+            </div><!-- # Faq item-->
+
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                  <i class="bi bi-question-circle question-icon"></i>
+                 How secure is our sensitive data online?
+                </button>
+              </h3>
+              <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                <div class="accordion-body">
+                  All of your data are 100% secure on our server, we also provide a 24/7 support system.
+                </div>
+              </div>
+            </div><!-- # Faq item-->
+
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
+                  <i class="bi bi-question-circle question-icon"></i>
+                  Is the cost negotiable?
+                </button>
+              </h3>
+              <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                <div class="accordion-body">
+                  <i class="bi bi-question-circle question-icon"></i>
+                  Please get in touch with us to discuss your specific need and pricing.
+                </div>
+              </div>
+            </div><!-- # Faq item-->
+
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="600">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
+                  <i class="bi bi-question-circle question-icon"></i>
+                  Do you offer other educational services?
+                </button>
+              </h3>
+              <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                <div class="accordion-body">
+                  Yes, Schoolly is powered by FIZCOS INFOTECH SOLUTIONS an ICT company that provides extensive
+                  cutting-edge information technology solutions. 
+                </div>
+              </div>
+            </div><!-- # Faq item-->
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("{% static 'pages/assets/img/faq.jpg' %}");'>&nbsp;</div>
+      </div>
+
+    </div>
+  </section><!-- End F.A.Q Section -->
+  
+  {% endblock content_body %}

@@ -23,7 +23,7 @@ urlpatterns = [
     path('staff/', include('staff.urls', namespace='staff')),
 
     path('attendance/', include('attendance.urls', namespace='attendance')),
-    path('demoschool/', include('demoschool.urls', namespace='demoschool')),
+    # path('demoschool/', include('demoschool.urls', namespace='demoschool')),
     path('portal/', include('portal.urls', namespace='portal')),
     path('quizes/', include('quizes.urls', namespace = 'quizes')),
     path('blog/', include('blog.urls', namespace = 'blog')),

@@ -2,30 +2,8 @@
 {% load static %}
 
   {% block title %}<title>Schoolly Blog </title>{% endblock title %}
- 
-      {% block navbar %}
-      <nav id="navbar" class="navbar">
-        <ul>
 
-          <li><a href="{% url 'pages:schoolly_home' %}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'pages:schoolly_home' %}">About Schoolly</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'pages:schoolly_home' %}">Features</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'pages:schoolly_home' %}">Pricing</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'pages:schoolly_home' %}">Faq</a></li>
-          <li><a href="{% url 'users:login' %}">Login</a></li>
-         
-          </li>
-          
-          <li><a class="nav-link scrollto" href="{% url 'pages:schoolly_home' %}">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle d-none"></i>
-      </nav><!-- .navbar -->
-
-      <a class="btn-getstarted scrollto" href="#">Book a Demo</a>
-
-    </div>
-    {% endblock navbar %}
-  </header><!-- End Header -->
+  ><!-- End Header -->
 {% block slide %}
   <!-- ======= Breadcrumbs ======= -->
   <div class="breadcrumbs">
@@ -34,8 +12,8 @@
       <div class="d-flex justify-content-between align-items-center">
         <h2>SchoollyBlog</h2>
         <ol>
-          <li><a href="{% url 'pages:schoolly_home' %}">Home</a></li>
-          <li>Blog</li>
+          <!-- <li><a href="{% url 'pages:schoolly_home' %}">Home</a></li>
+          <li>Blog</li> -->
         </ol>
       </div>
 
@@ -76,13 +54,13 @@
                     <ul>
                       <li class="d-flex align-items-center"><i class="bi bi-person"></i> {{ post.author }}</li>
                       <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2022-01-01"> {{ post.date_posted|date:"F d, Y" }}</time></a></li>
-  
+   
                     </ul>
                   </div>
 
                   <div class="content">
                     <p>
-                      {{ post.content|safe }}
+                      {{ post.content|truncatechars_html:150|safe  }}
                     </p>
                   </div>
 
@@ -150,72 +128,53 @@
               </div><!-- End sidebar search formn-->
 
               <div class="sidebar-item categories">
-                <h3 class="sidebar-title">Categories</h3>
+                <h5 class="sidebar-title">Training Category</h5>
                 <ul class="mt-3">
-                  <li><a href="#">Coding <span>(25)</span></a></li>
-                  <li><a href="#">Ms Office <span>(12)</span></a></li>
-                  <li><a href="#">Graphics <span>(5)</span></a></li>
-                  <li><a href="#">CyberSecurity <span>(22)</span></a></li>
-                  <li><a href="#">Data Science <span>(8)</span></a></li>
-                  <li><a href="#">UI/UX <span>(14)</span></a></li>
+                  <li><a href="#">Coding <span></span></a></li>
+                  <li><a href="#">Ms Office <span></span></a></li>
+                  <li><a href="#">Graphics <span></span></a></li>
+                  <li><a href="#">CyberSecurity <span></span></a></li>
+                  <li><a href="#">Data Science <span></span></a></li>
+                  <li><a href="#">UI/UX <span></span></a></li>
                 </ul>
               </div><!-- End sidebar categories-->
 
+
+
               <div class="sidebar-item recent-posts">
                 <h3 class="sidebar-title">Recent Posts</h3>
-
+            
                 <div class="mt-3">
-
+            
                   <div class="post-item mt-3">
-                    
-                    
-                  </div><!-- End recent post item-->
-                  {% for post in posts %}
-                  <!-- <div class="post-item"> -->
-                    <div class="post-item mt-3">
-                    
+                    {% for post in posts %}
                     <img src="{{ post.post_img.url }}" alt="" class="flex-shrink-0">
                     <div>
-                      <h4><a href="{% url 'blog:post_detail' post.id %}"> {{ post.title }}</h4>
+                      <h4><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a></h4>
                       <time datetime="2020-01-01">{{ post.date_posted|date:"F d, Y" }}</time>
                     </div>
-                    
+                    {% endfor %}
                   </div><!-- End recent post item-->
-                  {% endfor %}
-                  <!-- End recent post item-->
-
+            <!-- End recent post item-->
+            
                 </div>
-                
-
+            
               </div><!-- End sidebar recent posts-->
-
-              <div class="sidebar-item tags">
-                <h3 class="sidebar-title">Tags</h3>
-                <ul class="mt-3">
-                  <li><a href="#">App</a></li>
-                  <li><a href="#">IT</a></li>
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">Mac</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Office</a></li>
-                  <li><a href="#">Creative</a></li>
-                  <li><a href="#">Windows</a></li>
-                  <li><a href="#">C#</a></li>
-                  <li><a href="#">Java</a></li>
-                  <li><a href="#">Python</a></li>
-                </ul>
-              </div><!-- End sidebar tags-->
-
+            
+              <!-- End sidebar tags-->
+            
             </div><!-- End Blog Sidebar -->
+            
+            </div>
+            </div>
+            
+            </div>
+            </section><!-- End Blog Details Section -->
+            
+            </main><!-- End #main -->
 
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Blog Section -->
-
-  </main><!-- End #main -->
+            
   {% endblock content_body %}
 
   <!-- ======= Footer ======= -->
+ 

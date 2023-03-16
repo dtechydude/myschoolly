@@ -1,6 +1,6 @@
-from xml.etree.ElementTree import Comment
+# from xml.etree.ElementTree import Comment
 from django import forms
-from.models import Lesson, Comment, Reply
+from .models import Lesson, Comment, Reply
 
 
 
@@ -10,7 +10,9 @@ class LessonForm(forms.ModelForm):
         
         model = Lesson
         fields = ('lesson_id', 'name', 'position', 'ppt', 'video', 'comment')
-
+        widgets = {
+            'comment': forms.Textarea(attrs={'class':'form-control', 'rows':4, 'cols':70, 'placeholder':"Enter Your Comment"}),
+        }
 
 class CommentForm(forms.ModelForm):
     class Meta:

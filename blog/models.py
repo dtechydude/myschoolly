@@ -12,6 +12,11 @@ class Post(models.Model):
     content = RichTextField(blank=True, null=True)
     date_posted = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='like_post')
+
+    def total_likes(self):
+        return self.likes.count()
+
 
     def __self__(self):
         return self.title

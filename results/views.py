@@ -95,7 +95,10 @@ def view_self_result(request, **kwargs):
         return render(request, 'results/view_self_result.html', context)
 
     except StudentDetail.DoesNotExist:
-        return HttpResponse('You are not a student')
+        return HttpResponse('<div style="text-align:center; padding-top:100px;"><h1 > Oops! You are not a student</h1>'
+                                '<p>Please <a href="#">register</a> as a student</p>'
+                                '</div>'
+                                )
         
 
 # FUNCTION FOR DOWNLOADING FILE
@@ -124,5 +127,9 @@ def view_self_reportsheet(request, **kwargs):
         return render(request, 'results/my_reportsheet.html', context)
 
     except StudentDetail.DoesNotExist:
-        return HttpResponse('You are not a student')
+        return HttpResponse('<div style="text-align:center; padding-top:100px;"><h1 > Oops! You are not a student</h1>'
+                                '<p>Please <a href="#">register</a> as a student</p>'
+                                '</div>'
+                                )
+      
         

@@ -59,21 +59,32 @@
         <ul>
 
           <li><a href="{% url 'pages:schoolly_home' %}">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.html#about">About Schoolly</a></li>
-          <li><a class="nav-link scrollto" href="index.html#services">Features</a></li>
-          <li><a class="nav-link scrollto" href="index.html#pricing">Pricing</a></li>
-          <li><a class="nav-link scrollto" href="index.html#faq">Faq</a></li>
-          <li><a href="{% url 'blog:blog_home' %}">Blog</a></li>
+
+        <!-- </li>{% url 'pages:about' as about_url %}
+        <a href="{% if request.get_full_path == about_url %} class="active" {% endif %}>About Schoolly</a></li> -->
+
+          <li><a class="nav-link scrollto" href="{% url 'pages:about' %}">About Schoolly</a></li>
+          <!-- <li><a class="nav-link scrollto" href="index.html#services">Features</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="index.html#pricing">Pricing</a></li> -->
+          <li><a class="nav-link scrollto" href="{% url 'pages:faqs' %}">Help Center</a></li>
+          <li><a href="{% url 'blog:blog_home' %}">InfoBlog</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'pages:contact' %}">Contact</a></li>
+      
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'users:user_logout' %}">Logout</a></li>
+          {% else %}
           <li><a href="{% url 'users:login' %}">Login</a></li>
-         
+          {% endif %}
+
           </li>
-          
-          <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+         
+          <!-- </li>{% url 'pages:contact' as contact_url %}
+          <a class="nav-link scrollto" href="{{ contact_url }}" {% if request.get_full_path == contact_url %}class="active"{% endif %}>Contact</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
 
-      <a class="btn-getstarted scrollto" href="index.html#contact">Book a Demo</a>
+      <a class="btn-getstarted scrollto" href="{% url 'pages:contact' %}">Book a Demo</a>
 
     </div>
     {% endblock navbar %}
@@ -86,16 +97,17 @@
       <h2>Modern Solution for better <span>Education</span></h2>
       <p>Speed up with Schoolly and get the best digital experience for your school.</p>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="{% url 'pages:about' %}" class="btn-get-started scrollto">Get Started</a>
         <a href="https://www.youtube.com/watch?v=ymA81wkhpr4" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
       </div>
     </div>
    
   </section>
   {% endblock slide %}
-  {% block content_body %}
+  
 
   <main id="main">
+    {% block content_body %}
 
    
   <!-- ======= Services Section ======= -->
@@ -124,7 +136,7 @@
             </div>
             <div class="details position-relative">
               <div class="icon">
-                <i class="bi bi-activity"></i>
+                <i class="bi bi-people"></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>Students Mgt.</h3>
@@ -141,7 +153,7 @@
             </div>
             <div class="details position-relative">
               <div class="icon">
-                <i class="bi bi-broadcast"></i>
+                <i class="bi bi-microsoft-teams"></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>Staff Mgt.</h3>
@@ -158,7 +170,7 @@
             </div>
             <div class="details position-relative">
               <div class="icon">
-                <i class="bi bi-easel"></i>
+                <i class="bi bi-person-workspace"></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>E-Learning</h3>
@@ -175,7 +187,7 @@
             </div>
             <div class="details position-relative">
               <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
+                <i class="bi bi-currency-exchange"></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>Finance & Admin.</h3>
@@ -193,7 +205,7 @@
             </div>
             <div class="details position-relative">
               <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
+                <i class="bi bi-question-octagon"></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>Exams/CBT</h3>
@@ -211,7 +223,7 @@
             </div>
             <div class="details position-relative">
               <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
+                <i class="bi bi-keyboard"></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>Digital School</h3>
@@ -237,7 +249,7 @@
     <!-- End Featured Services Section -->
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <!-- <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
@@ -257,14 +269,14 @@
             <h3 class="pt-0 pt-lg-5">Schoolly is the enterprise Software that manage your educational institution without hassles.</h3>
 
             <!-- Tabs -->
-            <ul class="nav nav-pills mb-3">
+            <!-- <ul class="nav nav-pills mb-3">
               <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">K-12 EDUCATION</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">TERTIARY</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">OTHER ACADEMY</a></li>
-            </ul><!-- End Tabs -->
+            </ul>End Tabs -->
 
             <!-- Tab Content -->
-            <div class="tab-content">
+            <!-- <div class="tab-content">
 
               <div class="tab-pane fade show active" id="tab1">
 
@@ -275,9 +287,9 @@
                   <h4>
                     Enrollments, Assignments, Assessments...</h4>
                 </div>
-                <p>An all-in-one solution for your school, managing students enrollment, update, home-work, test/examination and assessments with easy to navigate tools.</p>
+                <p>An all-in-one solution for your school, managing students enrollment, update, home-work, test/examination and assessments with easy to navigate tools.</p> -->
 
-                <div class="d-flex align-items-center mt-4">
+                <!-- <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
                   <h4>Results Tracking, Fees Payment, Attendance...</h4>
                 </div>
@@ -289,9 +301,9 @@
                 </div>
                 <p>Schoolly enables you to manage and track the progress of your school from anywhere accross different device. View and download progress reports with excellent report filtering features.</p>
 
-              </div><!-- End Tab 1 Content -->
+              </div>End Tab 1 Content -->
 
-              <div class="tab-pane fade show" id="tab2">
+              <!-- <div class="tab-pane fade show" id="tab2">
 
                 <p class="fst-italic">A bespoke solution fit for the running of any tertiary institutions. comprehensive features that digitally capture all areas of higher education system.</p>
 
@@ -310,13 +322,13 @@
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
                   <h4>Live Tutorials and Interactive Sessions.</h4>
-                </div>
-                <p> Explore the benefits of tutoring in an online environment, allow your teacher and student to interact in real-time 
+                </div> -->
+                <!-- <p> Explore the benefits of tutoring in an online environment, allow your teacher and student to interact in real-time 
                   from different locations.</p>
 
               </div><!-- End Tab 2 Content -->
 
-              <div class="tab-pane fade show" id="tab3">
+              <!-- <div class="tab-pane fade show" id="tab3">
 
                 <p class="fst-italic">Whatever the nature or size of your educational set-up, schoolly solutions make running your academy stress-free</p>
 
@@ -326,21 +338,21 @@
                 </div>
                 <p>Conducting student admission online is made easy with diverse e-systems that include but not limited to e-learning, e-library, CBT and more..</p>
 
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Payments, staff/faculty mgt., e-tracking</h4>
+                <div class="d-flex align-items-center mt-4"> -->
+                  <!-- <i class="bi bi-check2"></i> -->
+                  <!-- <h4>Payments, staff/faculty mgt., e-tracking</h4>
                 </div>
                 <p>Scholly is bundled with a payment solution that enables one-click payment.</p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
                   <h4>Live Tutorials and Interactive Sessions</h4>
-                </div>
-                <p>Explore the benefits of tutoring in an online environment, allow your teacher and student to interact in real-time 
+                </div> -->
+                <!-- <p>Explore the benefits of tutoring in an online environment, allow your teacher and student to interact in real-time 
                   from different locations.</p>
 
-              </div><!-- End Tab 3 Content -->
-
+              </div>End Tab 3 Content -->
+<!-- 
             </div>
 
           </div>
@@ -348,13 +360,13 @@
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>End About Section --> 
 
     <!-- ======= Clients Section ======= -->
   <!-- End Clients Section -->
 
     <!-- ======= Call To Action Section ======= -->
-    <section id="cta" class="cta">
+    <!-- <section id="cta" class="cta">
       <div class="container" data-aos="zoom-out">
 
         <div class="row g-5">
@@ -374,7 +386,7 @@
         </div>
 
       </div>
-    </section><!-- End Call To Action Section -->
+    </section>End Call To Action Section -->
 
     <!-- ======= On Focus Section ======= -->
     <section id="onfocus" class="onfocus">
@@ -509,199 +521,14 @@
       </div>
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>Our Pricing</h2>
-          <p>Our flexible pricing system allows schools to scale accordingly. <br />
-            Starting from less than $1 per student, your school will enjoy all
-            the features that comes with Schoolly
-          </p>
-        </div>
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="pricing-item">
-
-              <div class="pricing-header">
-                <h3>StartPro</h3>
-                <h4><sup>$</sup>0.8<span> / term</span></h4>
-              </div>
-
-              <ul>
-                <li><i class="bi bi-dot"></i> <span>Students/Parents Mgt.</span></li>
-                <li><i class="bi bi-dot"></i> <span>Staff/Teachers Mgt.</span></li>
-                <li><i class="bi bi-dot"></i> <span>Results & Assessments</span></li>
-                <li><i class="bi bi-dot"></i> <span>Accounts Mgt.</span></li>
-                <li><i class="bi bi-dot"></i> <span>Notification & Feedback</span></li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a href="#" class="buy-btn">Order</a>
-              </div>
-
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="400">
-            <div class="pricing-item featured">
-
-              <div class="pricing-header">
-                <h3>LMSPlus</h3>
-                <h4><sup>$</sup>1<span> / term</span></h4>
-              </div>
-
-              <ul>
-                <li><i class="bi bi-dot"></i> <span>All StartPro Features</span></li>
-                <li><i class="bi bi-dot"></i> <span>E-learning</span></li>
-                <li><i class="bi bi-dot"></i> <span>CBT/Exams</spa></li>
-                <li><i class="bi bi-dot"></i> <span>Attendance & classes</spa></li>
-                <li><i class="bi bi-dot"></i> <span>Quiz/Test</span></li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a href="#" class="buy-btn">Order</a>
-              </div>
-
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="600">
-            <div class="pricing-item">
-
-              <div class="pricing-header">
-                <h3>Ultimate</h3>
-                <h4><sup>$</sup>1.5<span> / term</span></h4>
-              </div>
-
-              <ul>
-                <li><i class="bi bi-dot"></i> <span>StarterPro + LMSPlus</span></li>
-                <li><i class="bi bi-dot"></i> <span>E-learning Ultimate</span></li>
-                <li><i class="bi bi-dot"></i> <span>Student Community</span></li>
-                <li><i class="bi bi-dot"></i> <span>CBT Ultimate</span></li>
-                <li><i class="bi bi-dot"></i> <span>Custom Domain</span></li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a href="#" class="buy-btn">Order</a>
-              </div>
-
-            </div>
-          </div><!-- End Pricing Item -->
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
-
-    <!-- ======= F.A.Q Section ======= -->
-    <section id="faq" class="faq">
-      <div class="container-fluid" data-aos="fade-up">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-
-            <div class="content px-xl-5">
-              <h3>Frequently Asked <strong>Questions</strong></h3>
-              <p>
-                Below are some of the questions our prospects ask. In case you have other questions beyond what 
-                is provided here, please contact us through the information on this website.
-              </p>
-            </div>
-
-            <div class="accordion accordion-flush px-xl-5" id="faqlist">
-
-              <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    How long does it take to set up for my school?
-                  </button>
-                </h3>
-                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Your school will be onboarded within 72hrs of signing up for schoolly. 
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Do we require special training to get started?
-                  </button>
-                </h3>
-                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Yes, Schoolly provides FREE training session to get you started with the application.
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-                    <i class="bi bi-question-circle question-icon"></i>
-                   How secure is our sensitive data online?
-                  </button>
-                </h3>
-                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    All of your data are 100% secure on our server, we also provide a 24/7 support system.
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Is the cost negotiable?
-                  </button>
-                </h3>
-                <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Please get in touch with us to discuss your specific need and pricing.
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-              <div class="accordion-item" data-aos="fade-up" data-aos-delay="600">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    Do you offer other educational services?
-                  </button>
-                </h3>
-                <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Yes, Schoolly is powered by FIZCOS INFOTECH SOLUTIONS an ICT company that provides extensive
-                    cutting-edge information technology solutions. 
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("{% static 'pages/assets/img/faq.jpg' %}");'>&nbsp;</div>
-        </div>
-
-      </div>
-    </section><!-- End F.A.Q Section -->
+<!-- End F.A.Q Section -->
 
 
     <!-- ======= Recent Blog Posts Section ======= -->
   
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <!-- <section id="contact" class="contact">
       <div class="container">
 
         <div class="section-header">
@@ -731,7 +558,7 @@
                 </div>
               </div><!-- End Info Item -->
 
-              <div class="info-item d-flex">
+              <!-- <div class="info-item d-flex">
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h4>Email:</h4>
@@ -739,7 +566,7 @@
                 </div>
               </div><!-- End Info Item -->
 
-              <div class="info-item d-flex">
+              <!-- <div class="info-item d-flex">
                 <i class="bi bi-whatsapp flex-shrink-0"></i> 
                 <div>
                   <h4>WhatsApp:</h4>
@@ -747,11 +574,11 @@
                 </div>
               </div><!-- End Info Item -->
 
-            </div>
+            <!-- </div>
 
-          </div>
+          <!-- </div>  --> 
 
-          <div class="col-lg-8">
+          <!-- <div class="col-lg-8">
             <form action="{% url 'pages:schoolly_home' %}" method="post" >
               {% csrf_token %}
               <div class="row">
@@ -777,8 +604,10 @@
               </div>
               <div class="text-center"><button type="submit"  class="btn btn-outline-secondary">Send Message</button></div>
               
-            </form>
+            </form> -->
+
             {% endif %}
+
             <div></div>
                 <div></div>
                 <div></div>
@@ -789,8 +618,231 @@
       </div>
     </section><!-- End Contact Section -->
 
+   <!-- ======= Testimonials Section ======= -->
+   <section id="testimonials" class="testimonials">
+    <div class="container" data-aos="fade-up">
+
+      <div class="testimonials-slider swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+              <h3>Obadinna Mathew</h3>
+              <h4>St. George Schools</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+              <h3>Nelly Ngwu</h3>
+              <h4>GCIS Port Harcourt</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+              <h3>Dr. Juline Bello</h3>
+              <h4>Greenville Int. School</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+         
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+              <h3>John Larson</h3>
+              <h4>Entrepreneur</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section><!-- End Testimonials Section -->
+
+     <!-- ======= Portfolio Section ======= -->
+     <section id="portfolio" class="portfolio" data-aos="fade-up">
+
+      <div class="container">
+
+        <div class="section-header">
+          <h2>Portfolio</h2>
+          <p>Non hic nulla eum consequatur maxime ut vero memo vero totam officiis pariatur eos dolorum sed fug dolorem est possimus esse quae repudiandae. Dolorem id enim officiis sunt deserunt esse soluta consequatur quaerat</p>
+        </div>
+
+      </div>
+
+      <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
+
+        <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+          <ul class="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-product">Product</li>
+            <li data-filter=".filter-branding">Branding</li>
+            <li data-filter=".filter-books">Books</li>
+          </ul><!-- End Portfolio Filters -->
+
+          <div class="row g-0 portfolio-container">
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
+              <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 1</h4>
+                <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
+              <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Product 1</h4>
+                <a href="assets/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
+              <img src="assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 1</h4>
+                <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
+              <img src="assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Books 1</h4>
+                <a href="assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
+              <img src="assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 2</h4>
+                <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
+              <img src="assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Product 2</h4>
+                <a href="assets/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
+              <img src="assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 2</h4>
+                <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
+              <img src="assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Books 2</h4>
+                <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
+              <img src="assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 3</h4>
+                <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
+              <img src="assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Product 3</h4>
+                <a href="assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
+              <img src="assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 3</h4>
+                <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
+              <img src="assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Books 3</h4>
+                <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+          </div><!-- End Portfolio Container -->
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+
+    {% endblock content_body %}
   </main><!-- End #main -->
-  {% endblock content_body %}
+  
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -803,8 +855,7 @@
             <div class="footer-info">
               <h3><img src="{% static 'pages/assets/img/logo-full1.png' %}"></h3>
               <p>
-                Move ahead with Schoolly and get the best digital experience for your school. <br>
-                <br>
+                Move ahead with Schoolly and get the best digital experience for your school. <br>               
                 <strong>WhatsApp:</strong> +234 816 280 3828<br>
                 <strong>Email:</strong> contact@schoolly.ng<br>
               </p>
@@ -812,13 +863,13 @@
           </div>
           {% block footer_nav %}
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Navigation</h4>
+            <h4>Quick Links</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="index.html#about">About Schoolly</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="index.html#services">Schoolly Features</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="index.html#faq">FAQ</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="index.html#pricing">Our Pricing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="index.html#contact">Enquiry</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="{% url 'pages:about' %}">About Schoolly</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="{% url 'pages:schoolly_home' %}">Schoolly Features</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="{% url 'pages:faqs' %}">FAQ</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="{% url 'pages:about' %}">Our Pricing</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a class="nav-link scrollto" href="{% url 'pages:contact' %}">Enquiries</a></li>
             </ul>
           </div>
           {% endblock footer_nav %}
@@ -826,10 +877,10 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> Web Design & Dev.</li>
-              <li><i class="bi bi-chevron-right"></i> Mobile App Dev.</li>
-              <li><i class="bi bi-chevron-right"></i> Project Mgt</li>
-              <li><i class="bi bi-chevron-right"></i> ICT Training</li>
+              <li><i class="bi bi-chevron-left"></i> Web Design & Dev.</li>
+              <li><i class="bi bi-chevron-left"></i> Mobile App Dev.</li>
+              <li><i class="bi bi-chevron-left"></i> Enterprise Solutions</li>
+              <li><i class="bi bi-chevron-left"></i> ICT Training</li>
            
             </ul>
           </div>
@@ -858,7 +909,7 @@
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-            Designed by <a href="https://fizcos.com/">Fizcos Infotech Solutions</a>
+            Developed by <a href="https://fizcos.com/">Fizcos Infotech Solutions</a>
           </div>
         </div>
 

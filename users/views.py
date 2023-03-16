@@ -16,7 +16,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'New user account has been created' )
-            return redirect('student_staff')
+            return redirect('users:student_staff')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
@@ -31,7 +31,7 @@ def profile(request):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your profile has been updated successfully')
-            return redirect('profile')
+            return redirect('users:profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
@@ -66,7 +66,7 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('pages:home'))
+    return HttpResponseRedirect(reverse('pages:about'))
 
 
 @login_required

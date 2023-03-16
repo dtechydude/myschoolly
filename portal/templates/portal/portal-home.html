@@ -388,10 +388,10 @@
 							<span class="nav-text">School Pages</span>
 						</a>
 						<ul aria-expanded="false">
-							<li><a href="{% url 'demoschool:demoschool' %}">Home Page</a></li>
-							<li><a href="{% url 'demoschool:about_us' %}">About Us</a></li>
-							<li><a href="{% url 'demoschool:school_gallery' %}">Gallery</a></li>		
-							<li><a href="{% url 'demoschool:infoblog' %}">InfoBlog</a></li>
+							<li><a href="{% url 'pages:schoolly_home' %}">Home Page</a></li>
+							<li><a href="{% url 'pages:schoolly_home' %}">About Us</a></li>
+							<li><a href="{% url 'pages:schoolly_home' %}">Gallery</a></li>		
+							<li><a href="{% url 'pages:schoolly_home' %}">InfoBlog</a></li>
 							
 						</ul>
 					</li>
@@ -588,7 +588,7 @@
 																</div>
 															</div>
 															<div class="mt-4">
-																<a href="{% url 'profile' %}" class="btn btn-primary mb-1 me-1">Edit My Profile</a> 
+																<a href="{% url 'users:profile' %}" class="btn btn-primary mb-1 me-1">Edit My Profile</a> 
 																<a href="javascript:void(0);" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#sendMessageModal">School Calendar</a>
 															</div>
 														</div>
@@ -825,7 +825,7 @@
 																		
 															
 																
-														<div align="center"><button class="btn btn-danger"  ><a href="{% url 'profile' %}"><span style="color:white;">Update My Profile</span></a></button></div>
+														<div align="center"><button class="btn btn-danger"  ><a href="{% url 'users:profile' %}"><span style="color:white;">Update My Profile</span></a></button></div>
 																
 															
 															</form>

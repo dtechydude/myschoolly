@@ -1,0 +1,126 @@
+{% extends 'pages/schoolly-home.html' %}
+{% load static %}
+
+  {% block title %}<title>Schoolly Blog </title>{% endblock title %}
+
+  {% block content_body %}
+  {% block slide %}
+ 
+  {% endblock slide %}
+  <div class="breadcrumbs">
+  
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Contact Us</h2>
+        <ol>
+          <!-- <li><a href="index.html">Home</a></li> -->
+          <!-- <li>For Demo Booking & Contact</li> -->
+        </ol>
+      </div>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+  <section id="services" class="services">
+    <div class="container" data-aos="fade-up">
+      {% if message_name %}
+      <center style="padding:30px";>
+          <h3 style="color:black">Thanks {{ message_name }}!</h3>we received your email and will respond shortly.
+          
+      </center>
+      
+      </div>
+      {% else %}
+
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-header">
+        <h3>For Demo & Enquiries</h3>
+        <p>For all enquiries regarding the Schoolly software, feel free to complete the form provided below or reach us through WhatsApp and other contacts provided on this page.</p>
+      </div>
+
+    </div>
+
+
+    <div class="container">
+
+      <div class="row gy-5 gx-lg-5">
+
+        <div class="col-lg-4">
+
+          <div class="info">
+            <h3>Get in touch</h3>
+            <p>For all enquiries, complete the form or contact through the information below.</p>
+
+            <div class="info-item d-flex">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h4>Location:</h4>
+                <p>Schoolly is now available in Nigeria, West Africa, South Africa
+                  </p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h4>Email:</h4>
+                <p>contact@schoolly.ng</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex">
+              <i class="bi bi-whatsapp flex-shrink-0"></i> 
+              <div>
+                <h4>WhatsApp:</h4>
+                <p>+234 816 280 3828</p>
+              </div>
+            </div><!-- End Info Item -->
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-8">
+          <form action="{% url 'pages:schoolly_home' %}" method="post" >
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name or School" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md">
+                <input type="phone" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+              </div>
+              
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" placeholder="Message" required rows="12" cols=""></textarea>
+            </div>
+            <div class="my-3">
+              
+            </div>
+            <div class="text-center"><button type="submit"  class="btn btn-outline-secondary">Send Message</button></div>
+            
+          </form>
+         {% endif %}
+
+          <div></div>
+              <div></div>
+              <div></div>
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+  
+  {% endblock content_body %}
